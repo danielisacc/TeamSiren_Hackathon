@@ -5,48 +5,60 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 
 export function ResourcesList() {
   const resources = [
+    
     {
-      id: 1,
-      title: "Emergency Contacts",
-      description: "Important phone numbers and contacts for emergency services",
-      icon: Phone,
-      color: "text-red-500",
-      bgColor: "bg-red-50",
+      "id" : 1,
+      "facilty_name": "Dell Seton Medical Center at The University of Texas",
+      "street_address": "1500 Red River St, Austin, TX 78701",
+      "location": {
+        "latitude": 30.2730,
+        "longitude": -97.7313
+      },
+      "size": "large"
     },
     {
-      id: 2,
-      title: "Evacuation Guide",
-      description: "Step-by-step instructions for safe evacuation procedures",
-      icon: FileText,
-      color: "text-amber-500",
-      bgColor: "bg-amber-50",
+      "id" : 2,
+      "facility_name": "Ascension Seton Medical Center Austin",
+      "street_address": "1201 W 38th St, Austin, TX 78705",
+      "location": {
+        "latitude": 30.3065,
+        "longitude": -97.7420
+      },
+      "size": "large"
+    },
+    {       
+       "id" : 3,
+      "facility_name": "St. David's Medical Center",
+      "street_address": "919 E 32nd St, Austin, TX 78705",
+      "location": {
+        "latitude": 30.2925,
+        "longitude": -97.7236
+      },
+      "size": "large"
     },
     {
-      id: 3,
-      title: "Shelter Locations",
-      description: "List of all available emergency shelters and capacities",
-      icon: Home,
-      color: "text-blue-500",
-      bgColor: "bg-blue-50",
+      "id" : 4,
+      "facility_name": "Austin Regional Clinic: ARC South 1st",
+      "street_address": "1807 W Slaughter Ln, Austin, TX 78748",
+      "location": {
+        "latitude": 30.1726,
+        "longitude": -97.8195
+      },
+      "size": "medium"
     },
     {
-      id: 4,
-      title: "First Aid Tips",
-      description: "Basic first aid procedures for common emergency situations",
-      icon: FileText,
-      color: "text-green-500",
-      bgColor: "bg-green-50",
-    },
-    {
-      id: 5,
-      title: "Weather Updates",
-      description: "Latest forecasts and weather-related emergency information",
-      icon: FileText,
-      color: "text-purple-500",
-      bgColor: "bg-purple-50",
-    },
-  ]
-
+      "id" : 5,
+      "facility_name": "CommUnityCare North Central Health Center",
+      "street_address": "1210 W Braker Ln, Austin, TX 78758",
+      "location": {
+        "latitude": 30.3880,
+        "longitude": -97.7091
+      },
+      "size": "medium"
+    }
+  
+  
+]
   return (
     <Card className="border-slate-200 shadow-sm">
       <CardHeader className="pb-2">
