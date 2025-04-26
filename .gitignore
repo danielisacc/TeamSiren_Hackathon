@@ -18,3 +18,19 @@ Backend*/**/*$py.class
 *.log
 *.sqlite3
 .DS_Store
+
+# dependencies
+/Frontend/node_modules
+/Frontend/.pnp
+/Frontend/.pnp.js
+/Frontend/.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/Frontend/.next/
+/Frontend/out/
+
+# production
+/Frontend/build
