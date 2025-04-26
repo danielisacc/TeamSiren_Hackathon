@@ -48,7 +48,7 @@ export function ResourcesList() {
   ]
 
   return (
-    <Card className="border-slate-200 shadow-sm">
+    <Card className="border-slate-200 shadow-sm h-full">
       <CardHeader className="pb-2">
         <CardTitle className="text-lg font-semibold">Resources & Safety Tips</CardTitle>
       </CardHeader>
