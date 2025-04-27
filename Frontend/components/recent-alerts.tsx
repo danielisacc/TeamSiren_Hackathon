@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from "next/image"
+import Modal from "./modal"
 
 export function RecentAlerts() {
   const alerts = [
@@ -54,22 +55,17 @@ export function RecentAlerts() {
   }
 
   return (
-    <Card className="border-slate-200 shadow-sm flex-1 relative overflow-hidden">
+    <Card className="border-slate-200 shadow-sm relative overflow-hidden">
 
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0 opacity-10"
-        style={{ backgroundImage: "url('/placeholder.svg?height=600&width=800')" }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-white/95 z-0"></div>
-
-      <CardHeader className="pb-2 relative z-10">
+      <CardHeader className="pb-4 relative z-10">
         <CardTitle className="text-lg font-semibold flex items-center gap-2">
           <Clock className="h-5 w-5 text-slate-500" />
           What to do :
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-0 relative z-10">
-        <ScrollArea className="h-[calc(100%-3.5rem)] max-h-[calc(100vh-20rem)]">
+
+      <CardContent className="relative z-10">
+        <ScrollArea className="max-h-[320px]" >
           <div className="px-4 pb-4 space-y-3">
             {alerts.map((alert) => (
               <div
@@ -77,7 +73,7 @@ export function RecentAlerts() {
                 className="relative border rounded-lg flex flex-col gap-2 hover:bg-slate-50 transition-colors bg-white/80 overflow-hidden"
               >
 
-                <div className="z-50 p-3 ">
+                <div className="z-10 p-3">
                   <div className="  flex justify-between items-start">
                     <h3 className="text-white font-medium">{alert.title}</h3>
                     <span className={`text-xs px-2 py-0.5 rounded-full border ${getSeverityColor(alert.severity)}`}>
@@ -110,7 +106,7 @@ export function RecentAlerts() {
                   />
                 </div>
 
-                <div className="z-0 absolute w-full h-full bg-black/50" />
+                <div className="z-0 absolute w-full h-full bg-gradient-to-r from-black/60 to-transparent"  />
                   
 
               </div>
@@ -118,6 +114,7 @@ export function RecentAlerts() {
           </div>
         </ScrollArea>
       </CardContent>
+      
     </Card>
   )
 }
