@@ -51,7 +51,9 @@ class Command(BaseCommand):
                 continue
 
             for subscriber in affected_subscribers:
-                messenger_service.send_sms(subscriber.phone_number, message)
+                subscriber_zip = subscriber.zip_code
+                personalized_message = weather_service.build_alert_message(alert, settings.SITE_LINK, subscriber_zip=subscriber_zip)
+                messenger_service.send_sms(subscriber.phone_number, personalized_message)
 
             self.stdout.write(self.style.SUCCESS(
                 f'✅ Sent {affected_subscribers.count()} alerts for event: {alert.get("event", "Unknown Event")}'

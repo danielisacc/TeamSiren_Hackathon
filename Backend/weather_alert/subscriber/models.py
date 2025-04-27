@@ -13,3 +13,17 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.phone_number
+    
+
+class WeatherEvent(models.Model):
+    event = models.CharField(max_length=255)
+    headline = models.TextField()
+    description = models.TextField()
+    instruction = models.TextField(blank=True, null=True)
+    fips_code = models.CharField(max_length=10)  # Store FIPS as a short text
+    urgency = models.CharField(max_length=50)  # New field ✅
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.event} ({self.fips_code})"
+    

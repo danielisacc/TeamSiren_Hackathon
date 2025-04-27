@@ -41,6 +41,32 @@ class WeatherAlertService:
             }
         ]
 
+    def build_alert_message(self, alert, site_link, subscriber_zip=None):
+        event = alert.get('event', 'Weather Alert')
+        headline = alert.get('headline', '')
+        description = alert.get('description', '')
+        instruction = alert.get('instruction', '')
+
+        if subscriber_zip:
+            personalized_link = f"{site_link}?zip_code={subscriber_zip}"
+        else:
+            personalized_link = site_link
+
+        message = (
+            f"⚠️ {event}: {headline}\n\n"
+            f"{description}\n\n"
+            f"Instructions: {instruction}\n"
+        )
+
+        if len(message) > 290:
+            message = message[:290]
+            message = message + "... " + personalized_link
+        else:
+            message = message + "\n\n" + personalized_link
+
+        return message
+
+
     def get_clean_alerts(self):
         raw_alerts = self.fetch_alerts()
         cleaned_alerts = []
