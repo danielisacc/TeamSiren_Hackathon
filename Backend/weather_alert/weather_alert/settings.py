@@ -39,7 +39,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Allowing CORS between the backend and frontend
 CORS_ALLOWED_ORIGINS = [
-    "https://your-frontend-project.vercel.app",   # Your real deployed frontend URL
+    "*",   # Your real deployed frontend URL
 ]
 
 
