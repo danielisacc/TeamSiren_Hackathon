@@ -38,9 +38,7 @@ SUBSCRIBER_INPUT_MODE = "mock"  # "mock" or "real"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Allowing CORS between the backend and frontend
-CORS_ALLOWED_ORIGINS = [
-    "*",   # Your real deployed frontend URL
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Quick-start development settings - unsuitable for production
