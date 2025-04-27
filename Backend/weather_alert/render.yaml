@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: weather-alert-backend
+    env: python
+    rootDir: .   # "." means current folder (Backend/weather_alert)
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn weather_alert.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: weather_alert.settings
