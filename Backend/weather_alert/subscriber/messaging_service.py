@@ -1,11 +1,27 @@
 import requests
 import json
+from abc import ABC, abstractmethod
 
 class MessagingService():
+    @abstractmethod
     def send_sms(self, phone_number, message):
         raise TypeError("Subclasses must impliment send_sms method.")
     
-class LoomMessagingService(MessagingService):
+class MockMessagingService(MessagingService):
+    def __init__(self, *args, **kwargs):
+        self.sent_messages = {}
+
+    def send_sms(self, phone_number, message):
+        fake_sms = {
+            "phone": phone_number,
+            "message": message
+        }
+        self.sent_messages[phone_number] = message
+        print(f"📩 Mock Sent: {fake_sms}")
+        return fake_sms
+    
+
+class LoopMessagingService(MessagingService):
     def __init__(self, api_url, authorization_token, secret_key):
         self.api_url = api_url
         self.authorization_token = authorization_token

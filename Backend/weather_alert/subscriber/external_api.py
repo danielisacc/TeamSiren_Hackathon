@@ -1,6 +1,6 @@
 import requests
 
-class WeatherAlertService():
+class WeatherAlertService:
     BASE_URL = "https://api.weather.gov/alerts/active"
 
     def __init__(self, area="TX", use_dummy_data=False):
@@ -10,18 +10,18 @@ class WeatherAlertService():
     def fetch_alerts(self):
         if self.use_dummy_data:
             return self._load_dummy_alerts()
-        
+
         params = {
-            'area' : self.area
+            'area': self.area
         }
         response = requests.get(self.BASE_URL, params=params)
-        
+
         if response.status_code == 200:
             data = response.json()
             return data.get('features', [])
         else:
             return []
-        
+
     def _load_dummy_alerts(self):
         return [
             {
@@ -32,7 +32,11 @@ class WeatherAlertService():
                     "areaDesc": "Austin, TX 78701",
                     "severity": "Severe",
                     "effective": "2025-04-27T15:00:00Z",
-                    "expires": "2025-04-27T16:00:00Z"
+                    "expires": "2025-04-27T16:00:00Z",
+                    "geocode": {
+                        "SAME": ["048453"]
+                    },
+                    "instruction": "Move to an interior room on the lowest floor of a sturdy building."
                 }
             }
         ]
@@ -47,16 +51,17 @@ class WeatherAlertService():
                 'event': props.get('event', ''),
                 'headline': props.get('headline', ''),
                 'description': props.get('description', ''),
-                'instruction': props.get('instruction', ''),  # ← Add this
                 'area': props.get('areaDesc', ''),
                 'severity': props.get('severity', ''),
                 'effective': props.get('effective', ''),
                 'expires': props.get('expires', ''),
+                'geocode': props.get('geocode', {}),  # ✅ KEEP the geocode/FIPS info
+                'instruction': props.get('instruction', '')  # ✅ Optional field
             }
             cleaned_alerts.append(cleaned_alert)
 
         return cleaned_alerts
-    
+
     def build_alert_message(self, alert, site_link):
         event = alert.get('event', 'Weather Alert')
         headline = alert.get('headline', '')
@@ -64,10 +69,12 @@ class WeatherAlertService():
         instruction = alert.get('instruction', '')
 
         message = (
-                f"⚠️ {event}: {headline}\n\n"
-                f"{description}\n\n"
-                f"Instructions: {instruction}\n"
-                )
+            f"⚠️ {event}: {headline}\n\n"
+            f"{description}\n\n"
+            f"Instructions: {instruction}\n"
+        )
+
+        # Limit message to ~290 characters for SMS
         if len(message) > 290:
             message = message[:290]
             message = message + "... " + site_link
