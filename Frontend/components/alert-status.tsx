@@ -26,7 +26,7 @@ export function AlertStatus() {
             <Input
               type='postal-code'
               id="Password"
-              placeholder="password"
+              placeholder="postal code"
               className='bg-transparent'
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
@@ -38,7 +38,7 @@ export function AlertStatus() {
             <Input
               type="phone-number"
               id="username"
-              placeholder="username"
+              placeholder="phone number"
               className='bg-transparent'
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
@@ -53,8 +53,9 @@ export function AlertStatus() {
           variant="outline"
           size="sm"
           className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+          onClick={()=> window.open("imessage://sandbox.loopmessage.com@imsg.im&body=Subscribe%20Me%20Plese")}
         >
-          View Full Alert Details
+          Send me a Message
           <ArrowUpRight className="ml-1 h-4 w-4" />
         </Button>
       </CardFooter>

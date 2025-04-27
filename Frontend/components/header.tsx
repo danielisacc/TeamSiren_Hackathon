@@ -19,26 +19,7 @@ export function Header() {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center w-full max-w-sm mx-4">
-          <div className="relative w-full">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-500" />
-            <Input
-              type="search"
-              placeholder="Search locations or alerts..."
-              className="w-full pl-9 bg-slate-50 border-slate-200"
-            />
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="text-slate-600">
-            <Bell className="h-5 w-5" />
-            <span className="sr-only">Notifications</span>
-          </Button>
-          <div className="h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center">
-            <span className="text-sm font-medium text-slate-600">JD</span>
-          </div>
-        </div>
+        
       </div>
     </header>
   )
