@@ -18,6 +18,8 @@ Backend*/**/*$py.class
 *.log
 *.sqlite3
 .DS_Store
+Frontend/.env
+Backend/.env
 
 # dependencies
 /Frontend/node_modules

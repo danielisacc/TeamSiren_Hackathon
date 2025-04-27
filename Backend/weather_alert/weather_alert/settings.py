@@ -11,6 +11,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
+
+# API Variables from .env file
+LOOM_API_URL = os.environ.get("LOOM_API_URL")
+LOOM_AUTHORIZATION_TOKEN = os.environ.get("LOOM_AUTHORIZATION_TOKEN")
+LOOM_SECRET_KEY = os.environ.get("LOOM_SECRET_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
