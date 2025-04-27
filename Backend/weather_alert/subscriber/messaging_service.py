@@ -3,7 +3,7 @@ import json
 
 class MessagingService():
     def send_sms(self, phone_number, message):
-        raise NotImplimentedError("Subclasses must impliment send_sms method.")
+        raise TypeError("Subclasses must impliment send_sms method.")
     
 class LoomMessagingService(MessagingService):
     def __init__(self, api_url, authorization_token, secret_key):

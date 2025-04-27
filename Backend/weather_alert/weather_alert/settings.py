@@ -22,6 +22,12 @@ LOOM_API_URL = os.environ.get("LOOM_API_URL")
 LOOM_AUTHORIZATION_TOKEN = os.environ.get("LOOM_AUTHORIZATION_TOKEN")
 LOOM_SECRET_KEY = os.environ.get("LOOM_SECRET_KEY")
 
+# Alert Variables
+ALERT_AREA = 'TX'
+SITE_LINK = "https://your-emergency-site.com"
+DEFAULT_ALERT_MESSAGE = f'⚠️ Weather Alert in your area. Check website for details.{SITE_LINK}'
+ALERT_SEVERITIES = ['Severe', 'Extreme']
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
